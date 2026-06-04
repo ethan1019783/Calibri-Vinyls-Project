@@ -16,7 +16,7 @@ public class Album {
         this.genre = genre;
         this.price = price;
         this.imageUrl = imageUrl;
-        this.description = description; 
+        this.description = description;  //this is a test
     }
 
     public Long getId() {
