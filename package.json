@@ -1,0 +1,17 @@
+{
+  "name": "calibri-vinyls",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "tailwind": "npx @tailwindcss/cli -i ./src/main/resources/static/input.css -o ./src/main/resources/static/output.css --watch",
+    "build:css": "npx @tailwindcss/cli -i ./src/main/resources/static/input.css -o ./src/main/resources/static/output.css"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "latest",
+    "tailwindcss": "latest"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.107.0",
+    "@tailwindplus/elements": "^1.0.22"
+  }
+}
