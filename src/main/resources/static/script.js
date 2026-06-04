@@ -1,7 +1,8 @@
-
-
-helloButton?.addEventListener("click", () => {
-    message.textContent = "Hello from JavaScript inside your Spring Boot website!";
+document.getElementById("helloButton")?.addEventListener("click", () => {
+    const messageElement = document.getElementById("message");
+    if (messageElement) {
+        messageElement.textContent = "Hello from JavaScript inside your Spring Boot website!";
+    }
 });
 
 const products = [
