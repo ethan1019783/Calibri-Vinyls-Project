@@ -9,10 +9,16 @@ public class SupabaseService {
 
     private final WebClient webClient;
 
+
+    
     public SupabaseService(
             @Value("${supabase.url}") String supabaseUrl,
             @Value("${supabase.publishable-key}") String supabaseKey
     ) {
+
+            System.out.println("SUPABASE URL = " + supabaseUrl);
+    System.out.println("SUPABASE KEY = " + supabaseKey);
+
         this.webClient = WebClient.builder()
                 .baseUrl(supabaseUrl + "/rest/v1")
                 .defaultHeader("apikey", supabaseKey)
