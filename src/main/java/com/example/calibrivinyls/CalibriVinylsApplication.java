@@ -30,13 +30,6 @@ public class CalibriVinylsApplication {
         return "login";
     }
 
-
-    @GetMapping("/api/albums")
-    @ResponseBody
-    public String getAlbums() {
-        return supabaseService.getAlbums();
-    }
-
     
 }
 

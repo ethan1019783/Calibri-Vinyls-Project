@@ -1,8 +1,12 @@
 package com.example.calibrivinyls;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+
+import com.example.calibrivinyls.model.Album;
 
 @Service
 public class SupabaseService {
@@ -16,9 +20,6 @@ public class SupabaseService {
             @Value("${supabase.publishable-key}") String supabaseKey
     ) {
 
-            System.out.println("SUPABASE URL = " + supabaseUrl);
-    System.out.println("SUPABASE KEY = " + supabaseKey);
-
         this.webClient = WebClient.builder()
                 .baseUrl(supabaseUrl + "/rest/v1")
                 .defaultHeader("apikey", supabaseKey)
@@ -27,11 +28,13 @@ public class SupabaseService {
                 .build();
     }
 
-    public String getAlbums() {
+    public List<Album> getAlbums() {
         return webClient.get()
                 .uri("/albums?select=*")
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToFlux(Album.class)
+                .collectList()
                 .block();
+
     }
 }

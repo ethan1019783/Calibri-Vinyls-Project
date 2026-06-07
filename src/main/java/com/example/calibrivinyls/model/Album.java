@@ -6,16 +6,18 @@ public class Album {
     private String artist;
     private String genre;
     private double price;
-    private String imageUrl;
+    private String image_Url;
     private String description; 
 
-    public Album(Long id, String name, String artist, String genre, double price, String imageUrl, String description) {
+    public Album() {
+}
+    public Album(Long id, String name, String artist, String genre, double price, String image_url, String description) {
         this.id = id;
         this.name = name;
         this.artist = artist;
         this.genre = genre;
         this.price = price;
-        this.imageUrl = imageUrl;
+        this.image_Url = image_url;
         this.description = description;
     }
 
@@ -39,8 +41,8 @@ public class Album {
         return price;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImage_Url() {
+        return image_Url;
     }
 
     public String getDescription() {

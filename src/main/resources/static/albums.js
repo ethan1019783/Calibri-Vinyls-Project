@@ -1,4 +1,48 @@
 const productGrid = document.getElementById("product-grid");
+async function loadAlbums() {
+    try {
+        const response = await fetch("/api/albums");
+        const albums = await response.json(); 
+
+
+        albums.forEach(function(album) {
+        const card = document.createElement("div"); 
+        card.className = "border border-gray-200 rounded-xl p-4 shadow-sm bg-white"; 
+
+        card.innerHTML = `
+                <img 
+                src="/images/${album.image_url}" 
+                alt="${album.slug}" 
+                class="w-full h-56 object-cover rounded-lg mb-4">
+
+                <h3 class="text-lg font-semibold">${album.name}</h3>
+                <p class="text-gray-500">${album.artist}</p>
+
+                <div class="flex items-center justify-between mt-4">
+                    <span class="font-bold">${album.price}</span>
+                    <button class="px-4 py-2 bg-indigo-500 text-white rounded-full hover:bg-indigo-600">
+                        Add
+                    </button>
+                </div>
+            `; 
+
+
+
+             productGrid.appendChild(card);
+
+        }); 
+
+    } catch (error) {
+        console.error("Error loading albums to grid:", error)
+    }
+}
+
+loadAlbums(); 
+
+
+
+
+
 
 
 // load album names to console
@@ -27,37 +71,44 @@ async function loadAlbumsToConsole() {
 loadAlbumsToConsole();
 
 
-async function loadAlbums() {
-    try {
-        const response = await fetch("/api/albums");
-        const albums = await response.json(); 
-    }
-    
-}
 
-//load album names to display cards 
-products.forEach(product => {
-    const card = document.createElement("div");
+// const productGrid = document.getElementById("product-grid");
+// async function loadAlbums() {
+//     try {
+//         const response = await fetch("/api/albums");
+//         const albums = await response.json(); 
 
-    card.className = "border border-gray-200 rounded-xl p-4 shadow-sm bg-white"; // creates the card blank 
 
-    card.innerHTML = `   
-        <img 
-            src="${product.image}" 
-            alt="${product.name}" 
-            class="w-full h-56 object-cover rounded-lg mb-4"
-        >
+//         albums.forEach(function(album) {
+//         const card = document.createElement("div"); 
+//         card.className = "border border-gray-200 rounded-xl p-4 shadow-sm bg-white"; 
 
-        <h3 class="text-lg font-semibold">${product.name}</h3>
-        <p class="text-gray-500">${product.artist}</p>
+//         card.innerHTML = `
+//                 <img 
+//                 src="/images/${album.image_url}" 
+//                 alt="${album.slug}" 
+//                 class="w-full h-56 object-cover rounded-lg mb-4">
 
-        <div class="flex items-center justify-between mt-4">
-            <span class="font-bold">$${product.price}</span>
-            <button class="px-4 py-2 bg-indigo-500 text-white rounded-full hover:bg-indigo-600">
-                Add
-            </button>
-        </div>
-    `;
+//                 <h3 class="text-lg font-semibold">${album.name}</h3>
+//                 <p class="text-gray-500">${album.artist}</p>
 
-    productGrid.appendChild(card);
-});
+//                 <div class="flex items-center justify-between mt-4">
+//                     <span class="font-bold">${album.price}</span>
+//                     <button class="px-4 py-2 bg-indigo-500 text-white rounded-full hover:bg-indigo-600">
+//                         Add
+//                     </button>
+//                 </div>
+//             `; 
+
+
+
+//              productGrid.appendChild(card);
+
+//         }); 
+
+//     } catch (error) {
+//         console.error("Error loading albums to grid:", error)
+//     }
+// }
+
+// loadAlbums(); 
