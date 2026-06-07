@@ -11,9 +11,9 @@ async function loadAlbums() {
 
         card.innerHTML = `
                 <img 
-                src="/images/${album.image_url}" 
+                src="/images/${album.imageUrl}" 
                 alt="${album.slug}" 
-                class="w-full h-56 object-cover rounded-lg mb-4">
+                class="w-full h-60 object-cover rounded-lg mb-4">
 
                 <h3 class="text-lg font-semibold">${album.name}</h3>
                 <p class="text-gray-500">${album.artist}</p>
@@ -70,45 +70,3 @@ async function loadAlbumsToConsole() {
 }
 loadAlbumsToConsole();
 
-
-
-// const productGrid = document.getElementById("product-grid");
-// async function loadAlbums() {
-//     try {
-//         const response = await fetch("/api/albums");
-//         const albums = await response.json(); 
-
-
-//         albums.forEach(function(album) {
-//         const card = document.createElement("div"); 
-//         card.className = "border border-gray-200 rounded-xl p-4 shadow-sm bg-white"; 
-
-//         card.innerHTML = `
-//                 <img 
-//                 src="/images/${album.image_url}" 
-//                 alt="${album.slug}" 
-//                 class="w-full h-56 object-cover rounded-lg mb-4">
-
-//                 <h3 class="text-lg font-semibold">${album.name}</h3>
-//                 <p class="text-gray-500">${album.artist}</p>
-
-//                 <div class="flex items-center justify-between mt-4">
-//                     <span class="font-bold">${album.price}</span>
-//                     <button class="px-4 py-2 bg-indigo-500 text-white rounded-full hover:bg-indigo-600">
-//                         Add
-//                     </button>
-//                 </div>
-//             `; 
-
-
-
-//              productGrid.appendChild(card);
-
-//         }); 
-
-//     } catch (error) {
-//         console.error("Error loading albums to grid:", error)
-//     }
-// }
-
-// loadAlbums(); 

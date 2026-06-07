@@ -28,13 +28,24 @@ public class SupabaseService {
                 .build();
     }
 
-    public List<Album> getAlbums() {
-        return webClient.get()
-                .uri("/albums?select=*")
-                .retrieve()
-                .bodyToFlux(Album.class)
-                .collectList()
-                .block();
+    // public List<Album> getAlbums() {
+    //     return webClient.get()
+    //             .uri("/albums?select=*")
+    //             .retrieve()
+    //             .bodyToFlux(Album.class)
+    //             .collectList()
+    //             .block();
 
-    }
+    // }
+
+    public List<Album> getAlbums() {
+    List<Album> albums = webClient.get()
+            .uri("/albums?select=*")
+            .retrieve()
+            .bodyToFlux(Album.class)
+            .collectList()
+            .block();
+
+    return albums;
+}
 }
